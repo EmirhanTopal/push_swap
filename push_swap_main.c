@@ -3,26 +3,27 @@
 
 int main(int argc, char **argv)
 {
-    t_node *stack = NULL;
-    t_node *tmp;
+    t_node *a;
+    t_node *b;
 
+    b = NULL;
     if (argc < 2)
     {
         printf("Kullanım: ./push_swap [sayılar]\n");
-        return (1);
+        return (0);
     }
-
-    ft_fill_stack(&stack, argv + 1); // Stack'i doldur
+    a = ft_init_stack(argc, argv); // Stack'i doldur
 
     // Stack'in oluşup oluşmadığını yazdır
-    tmp = stack;
+    b = a;
     printf("Stack içeriği:\n");
-    while (tmp)
+    while (b)
     {
-        printf("%d -> ", tmp->data);
-        tmp = tmp->next;
+        printf("%d -> ", b->data);
+        b = b->next;
     }
     printf("NULL\n");
-
+    ft_free_stack(&a);
+    ft_free_stack(&b);
     return (0);
 }

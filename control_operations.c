@@ -31,7 +31,7 @@ int ft_is_number(char *str)
     return (1);
 }
 
-int ft_atoi_check(char *str, int *num)
+int ft_atoi_check(char *str, long long *num)
 {
     long long result;
     int sign;
@@ -58,14 +58,40 @@ int ft_atoi_check(char *str, int *num)
     return (1);
 }
 
-int ft_has_duplicate(t_node *stack, int num)
+int	ft_is_duplicate(t_node *a, int value)
 {
-    while (stack)
-    {
-        if (stack->data == num)
+	t_node *current = a;
+	while (current)
+	{
+		if (current->data == value)
+			return (1);  // Duplicate bulundu, 1 döndürüyoruz
+		current = current->next;
+	}
+	return (0);  // Duplicate bulunamadı, 0 döndürüyoruz
+}
+
+int ft_duplicate_control(t_node *a)
+{
+	t_node	*current;
+
+	current = a;
+	while (current)
+	{
+		// Eğer bu değeri daha önce gördüysek duplicate var
+		if (ft_is_duplicate(current->next, current->data))
             return (1);
-        stack = stack->next;
-    }
+		current = current->next;
+	}
     return (0);
 }
 
+int	ft_sorted_control(t_node *a)
+{
+	while (a && a->next)
+	{
+		if (a->data > a->next->data)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}

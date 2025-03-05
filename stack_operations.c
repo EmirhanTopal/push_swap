@@ -11,41 +11,60 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-t_node	*ft_init_stack(void)
+t_node	*ft_init_stack(int argc, char **argv)
 {
-	return (NULL);
+	t_node  *a;
+    char    **args;
+
+    a = NULL;
+    args = ft_fill_stack(&a, argc, argv);
+    // argc == 2 Durumu:
+    //Eğer argc == 2 ise, args dizisi dinamik olarak ayrılmıştır çünkü argv[1]'den gelen string ayrıştırılmıştır.
+    //Bu durumda, args dizisi artık kullanılmayacaksa, 
+    //bellekte gereksiz yer kaplamaması için free edilmelidir.
+    if (argc == 2)
+        free(args);
+    return (a);
 }
 
-void ft_fill_stack(t_node **stack, char **argv)
+char    **ft_fill_stack(t_node **stack, int argc, char **argv)
 {
-    int num;
-    int i;
+    char	    **args;
+    long long	num;
+	int		    i;
 
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+		args = argv + 1;
 	i = 0;
-    while (argv[i])
+    while (args[i])
     {
-        if (!ft_is_number(argv[i])) // Sayı mı kontrolü
+        if (!ft_is_number(args[i])) // Sayı mı kontrolü
         {
             write(2, "Hata: Geçersiz karakter\n", 24);
             ft_free_stack(stack);
-            return ;
+            return (NULL);
         }
-        if (!ft_atoi_check(argv[i], &num)) // Integer sınır kontrolü
+        if (!ft_atoi_check(args[i], &num)) // Integer sınır kontrolü
         {
             write(2, "Hata: Sayı sınırı aşıldı\n", 26);
             ft_free_stack(stack);
-            return ;
-        }
-        if (ft_has_duplicate(*stack, num)) // Tekrar eden sayı kontrolü
-        {
-            write(2, "Hata: Tekrar eden sayı var\n", 28);
-            ft_free_stack(stack);
-            return ;
+            return (NULL);
         }
         ft_add_node_front(stack, num);
+        if (ft_duplicate_control(*stack)) // Tekrar eden sayı kontrolü
+        {
+            printf("Tekrar eden sayı bulundu, ekleme yapılmıyor!\n");
+            write(2, "Hata: Tekrar eden sayı var\n", 28);
+            ft_free_stack(stack);
+            return (NULL);
+        }
         i++;
     }
+    return (args);
 }
 
 int	ft_stack_length(t_node *stack)

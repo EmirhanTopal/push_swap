@@ -8,7 +8,9 @@ SRC = push_swap_main.c \
 		ft_push.c \
 		ft_rotate.c \
 		ft_reverse_rotate.c \
-		ft_swap.c
+		ft_swap.c \
+		ft_split.c \
+		ft_split_utils.c
 
 OBJ = $(SRC:.c=.o)
 
