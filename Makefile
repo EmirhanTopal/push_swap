@@ -10,7 +10,9 @@ SRC = push_swap_main.c \
 		ft_reverse_rotate.c \
 		ft_swap.c \
 		ft_split.c \
-		ft_split_utils.c
+		ft_split_utils.c \
+		ft_radix_sort.c \
+		sort_data_operations.c
 
 OBJ = $(SRC:.c=.o)
 

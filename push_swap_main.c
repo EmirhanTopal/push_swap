@@ -9,21 +9,22 @@ int main(int argc, char **argv)
     b = NULL;
     if (argc < 2)
     {
-        printf("Kullanım: ./push_swap [sayılar]\n");
+        //printf("Kullanım: ./push_swap [sayılar]\n");
         return (0);
     }
     a = ft_init_stack(argc, argv); // Stack'i doldur
-
-    // Stack'in oluşup oluşmadığını yazdır
-    b = a;
-    printf("Stack içeriği:\n");
-    while (b)
+    if (!a)
     {
-        printf("%d -> ", b->data);
-        b = b->next;
+        ft_free_stack(&a);
+        ft_free_stack(&b);
     }
-    printf("NULL\n");
-    ft_free_stack(&a);
-    ft_free_stack(&b);
+    ft_index_stack(a);
+    ft_radix_sort(&a, &b);
+    if (!ft_sorted_control(a))
+    {
+        printf("kral it is not sorted");
+        ft_free_stack(&a);
+        ft_free_stack(&b);
+    }
     return (0);
 }

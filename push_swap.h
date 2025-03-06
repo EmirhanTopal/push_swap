@@ -50,5 +50,8 @@ size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_sorted_control(t_node *a);
+int		ft_find_max_bit(t_node **a);
+void	ft_radix_sort(t_node **a, t_node **b);
 
 #endif

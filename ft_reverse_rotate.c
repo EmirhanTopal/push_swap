@@ -36,16 +36,19 @@ static	void	ft_reverse_rotate(t_node **stack)
 
 void	ft_rra(t_node **a)
 {
+	write(1, "rra\n", 4);
 	ft_reverse_rotate(a);
 }
 
 void	ft_rrb(t_node **b)
 {
+	write(1, "rrb\n", 4);
 	ft_reverse_rotate(b);
 }
 
 void	ft_rrr(t_node **a, t_node **b)
 {
+	write(1, "rrr\n", 4);
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
 }

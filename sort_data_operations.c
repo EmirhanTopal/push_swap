@@ -14,7 +14,7 @@
 
 int get_max_bits(t_node *stack)
 {
-    int max = INT_MIN;
+    int max = 2147483648;
     int bits = 0;
 
     while (stack)
@@ -50,7 +50,7 @@ void	ft_index_stack(t_node *a)
 	}
 }
 
-static int	ft_find_max_bit(t_node **a)
+int	ft_find_max_bit(t_node **a)
 {
 	t_node	*current;
 	int		max_index;
@@ -76,6 +76,7 @@ static int	ft_find_max_bit(t_node **a)
 	}
 	return (max_bit);
 }
+
 
 
 

@@ -30,16 +30,19 @@ static 	void		ft_swap(t_node **stack)
 
 void	ft_sa(t_node **a)
 {
+	write(1, "sa\n", 3);
 	ft_swap(a);
 }
 
 void	ft_sb(t_node **b)
 {
+	write(1, "sb\n", 3);
 	ft_swap(b);
 }
 
 void	ft_ss(t_node **a, t_node **b)
 {
+	write(1, "ss\n", 3);
 	ft_swap(a);
 	ft_swap(b);
 }

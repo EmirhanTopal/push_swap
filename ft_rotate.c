@@ -40,16 +40,19 @@ void	ft_rotate(t_node **stack)
 
 void	ft_ra(t_node **a)
 {
+	write(1, "ra\n", 3);
 	ft_rotate(a);
 }
 
 void	ft_rb(t_node **b)
 {
+	write(1, "ra\n", 3);
 	ft_rotate(b);
 }
 
 void	ft_rr(t_node **a, t_node **b)
 {
+	write(1, "rr\n", 3);
 	ft_rotate(a);
 	ft_rotate(b);
 }
