@@ -14,7 +14,7 @@
 
 int get_max_bits(t_node *stack)
 {
-    int max = 2147483648;
+    int max = -2147483648;
     int bits = 0;
 
     while (stack)
@@ -57,16 +57,16 @@ int	ft_find_max_bit(t_node **a)
 	int		max_bit;
 
 	current = *a;
+	if (!current)  // Boş liste kontrolü ekleyin
+        return (0);  // veya uygun bir hata değeri döndürebilirsiniz
 	max_index = current->index;
 	max_bit = 0;
-	// Listenin içindeki en büyük index değerini bul
 	while (current != NULL)
 	{
 		if (current->index > max_index)
 			max_index = current->index;
 		current = current->next;
 	}
-	// En büyük index değerinin kaç bit olduğunu hesapla
 	if (max_index == 0)
 		return (0);
 	while (max_index > 0)

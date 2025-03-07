@@ -1,6 +1,16 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+void print_stack(t_node *stack)
+{
+    while (stack)
+    {
+        printf("%d \n", stack->data);
+        stack = stack->next;
+    }
+    printf("\n");
+}
+
 int main(int argc, char **argv)
 {
     t_node *a;
@@ -13,6 +23,7 @@ int main(int argc, char **argv)
         return (0);
     }
     a = ft_init_stack(argc, argv); // Stack'i doldur
+    //print_stack(a);
     if (!a)
     {
         ft_free_stack(&a);

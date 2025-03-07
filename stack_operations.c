@@ -46,21 +46,21 @@ char    **ft_fill_stack(t_node **stack, int argc, char **argv)
         {
             write(2, "Hata: Geçersiz karakter\n", 24);
             ft_free_stack(stack);
-            return (NULL);
+            exit(EXIT_FAILURE);
         }
         if (!ft_atoi_check(args[i], &num)) // Integer sınır kontrolü
         {
             write(2, "Hata: Sayı sınırı aşıldı\n", 26);
             ft_free_stack(stack);
-            return (NULL);
+            exit(EXIT_FAILURE);
         }
-        ft_add_node_front(stack, num);
+        ft_add_node_end(stack, num);
         if (ft_duplicate_control(*stack)) // Tekrar eden sayı kontrolü
         {
             printf("Tekrar eden sayı bulundu, ekleme yapılmıyor!\n");
             write(2, "Hata: Tekrar eden sayı var\n", 28);
             ft_free_stack(stack);
-            return (NULL);
+            exit(EXIT_FAILURE);
         }
         i++;
     }
@@ -114,14 +114,3 @@ void ft_add_node_end(t_node **stack, int num)
     last->next = new; // Yeni düğümü sona bağla
 }
 
-void ft_add_node_front(t_node **stack, int num)
-{
-    t_node *new;
-
-    new = (t_node *)malloc(sizeof(t_node));
-    if (!new)
-        return ;
-    new->data = num;
-    new->next = *stack; // Yeni düğümün "next"ini mevcut stack'in başına bağla
-    *stack = new; // Stack'in yeni başı artık bu yeni düğüm
-}
